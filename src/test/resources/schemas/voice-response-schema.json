@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "VoiceResponse",
+  "description": "Schema for Voice AI response payload",
+  "type": "object",
+  "required": ["session_id", "response_text", "intent", "confidence"],
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "description": "Unique session identifier",
+      "minLength": 1
+    },
+    "response_text": {
+      "type": "string",
+      "description": "AI-generated response text"
+    },
+    "intent": {
+      "type": "string",
+      "description": "Detected user intent",
+      "enum": [
+        "greeting",
+        "weather_query",
+        "appointment_booking",
+        "order_status",
+        "support_request",
+        "general_query",
+        "fallback",
+        "goodbye"
+      ]
+    },
+    "confidence": {
+      "type": "number",
+      "description": "Confidence score of intent detection",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "response_time_ms": {
+      "type": "integer",
+      "description": "Response processing time in milliseconds",
+      "minimum": 0
+    },
+    "is_fallback": {
+      "type": "boolean",
+      "description": "Whether this is a fallback response"
+    },
+    "entities": {
+      "type": ["object", "null"],
+      "description": "Extracted entities from user input",
+      "additionalProperties": true
+    },
+    "status": {
+      "type": "string",
+      "description": "Response status",
+      "enum": ["success", "error", "partial"]
+    },
+    "error": {
+      "type": ["string", "null"],
+      "description": "Error message if status is error"
+    }
+  },
+  "additionalProperties": false
+}
+

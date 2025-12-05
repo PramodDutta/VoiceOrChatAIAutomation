@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "VoiceRequest",
+  "description": "Schema for Voice AI request payload",
+  "type": "object",
+  "required": ["session_id", "user_input"],
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "description": "Unique session identifier",
+      "minLength": 1
+    },
+    "user_input": {
+      "type": "string",
+      "description": "User's voice/text input"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Request timestamp in ISO 8601 format"
+    },
+    "voice_data": {
+      "type": ["string", "null"],
+      "description": "Base64 encoded voice data (optional)"
+    }
+  },
+  "additionalProperties": false
+}
+
